@@ -1,0 +1,47 @@
+<!--Tio Arya Dewa Prakasa-->
+<!--05211940000063-->
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .infobox { margin-top: 15px; }
+        .error { color: red; }
+        .result { color:lime}
+    </style>
+</head>  
+
+<body>
+    <script>
+        $(document).ready(function() {
+            $('.error').hide(); //menyembunyikan class dengan nama error saat pertama kali membuka halaman
+            $('.submit').click(function(event){ //melakukan aktifitas saat class dengan nama submit di klik
+                var amt=0; // variable untuk menyimpan nilai dari variabel dengan nilai awal 0
+                var count=$('input:checked').length; // variable untuk menyimpan nilai pada input yang dipilih dengan nilai sama dengan panjang karakter pada input
+                if(count==0) { //melakukan fungsi if pada saat tidak ada input yang dipilih namun class submit di klik, sehingga menyebabkan nilai variable count = 0
+                    $('p.result').hide(); //menyembunyikan class dengan nama result saat tidak ada input yang dipilih
+                    $('.error').show(); //menampilkan class dengan nama error saat tidak ada input yang dipilih
+                }
+                else{ //alternatif saat fungsi if tidak terpenuhi atau apabila salah satu input dipilih saat class submit di klik
+                    $('.error').hide(); //menyembunyikan class dengan nama error saat terdapat input yang dipilih
+                    $('p.result').show(); //menampilkan class dengan nama result saat terdapat input yang dipilih
+                    $('p.result').text('You have selected '+$('input:checked').attr("value")); //memberikan hasil berupa kalimat text pada class dengan nama result
+                }
+            event.preventDefault(); //membuat fungsi tersebut tidak dapat terulang lagi setelah event sebelumnya berjalan
+            });
+        });
+    </script>
+    <form>
+        <p> Select department :</p>
+        <input type="radio" name="department" class="infobox" value="Electrical Engineering"> Electrical Engineering <br>
+        <input type="radio" name="department" class="infobox" value="Biomedical Engineering"> Biomedical Engineering<br>
+        <input type="radio" name="department" class="infobox" value="Computer Engineering"> Computer Engineering<br>
+        <input type="radio" name="department" class="infobox" value="Informatics"> Informatics<br>
+        <input type="radio" name="department" class="infobox" value="Information Systems"> Information Systems<br>
+        <input type="radio" name="department" class="infobox" value="Information Technology"> Information Technology<br>
+        <p class="error">Select at least one department </p>
+        <p class="result"></p>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+</body>
+</html>
